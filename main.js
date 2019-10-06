@@ -12,6 +12,7 @@ function main(e) {
     function jsLoaded() {
         var progress_time = document.getElementsByClassName('playback-bar__progress-time');
         progress_time = progress_time[0].innerText.split(':');
+        min = parseInt(progress_time[0]);
         sec = parseInt(progress_time[1]);
         var info = document.getElementsByClassName('track-info ellipsis-one-line');
         var art = document.getElementsByClassName('now-playing__cover-art');
@@ -23,14 +24,14 @@ function main(e) {
                             style.backgroundImage.split("\"");
 
         flag = false;
-        if(flag == false & sec >= 1 & sec <= 2){
+        if(flag == false & min == 0 & sec >= 1 & sec <= 2){
             var options = {
                 body: artist_name,
                 icon: url[1]
             };
             var p = new Notification(music_title, 
                                      options);
-            setTimeout(p.close.bind(p), 6000); 
+            setTimeout(p.close.bind(p), 5000); 
             flag = true;
         }
     }
