@@ -1,0 +1,19 @@
+{
+  "name": "Spotify_Nofifier",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "SpotifyWeb版で流れている曲を通知します。",
+  "icons": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    },
+  "content_scripts": [
+    {
+      "matches": ["https://open.spotify.com/*"],
+      "js": ["./main.js"],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ]
+}
