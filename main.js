@@ -10,6 +10,7 @@ function main(e) {
     var flag = false;
 
     function jsLoaded() {
+        flag = false;
         var progress_time = document.getElementsByClassName('playback-bar__progress-time');
         progress_time = progress_time[0].innerText.split(':');
         var min = parseInt(progress_time[0]);
@@ -23,8 +24,7 @@ function main(e) {
         var url = art[0].getElementsByClassName('cover-art-image')[0].
                             style.backgroundImage.split("\"");
 
-        flag = false;
-        if(flag == false & min == 0 & sec >= 1 & sec <= 2){
+        if(flag == false & min == 0 & sec == 2){
             var options = {
                 body: artist_name,
                 icon: url[1]
