@@ -12,8 +12,8 @@ function main(e) {
     function jsLoaded() {
         var progress_time = document.getElementsByClassName('playback-bar__progress-time');
         progress_time = progress_time[0].innerText.split(':');
-        min = parseInt(progress_time[0]);
-        sec = parseInt(progress_time[1]);
+        var min = parseInt(progress_time[0]);
+        var sec = parseInt(progress_time[1]);
         var info = document.getElementsByClassName('track-info ellipsis-one-line');
         var art = document.getElementsByClassName('now-playing__cover-art');
 
