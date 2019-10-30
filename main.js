@@ -6,30 +6,30 @@ if (Notification.permission !== 'denied') {
 }
 
 function main(e) {
-    const jsInitCheckTimer = setInterval(jsLoaded, 1000);
-    var flag = false;
+    let jsInitCheckTimer = setInterval(jsLoaded, 1000);
+    let flag = false;
 
     function jsLoaded() {
         flag = false;
-        var progress_time = document.getElementsByClassName('playback-bar__progress-time');
+        let progress_time = document.getElementsByClassName('playback-bar__progress-time');
         progress_time = progress_time[0].innerText.split(':');
-        var min = parseInt(progress_time[0]);
-        var sec = parseInt(progress_time[1]);
-        var info = document.getElementsByClassName('track-info ellipsis-one-line');
-        var art = document.getElementsByClassName('now-playing__cover-art');
+        let min = parseInt(progress_time[0]);
+        let sec = parseInt(progress_time[1]);
+        let info = document.getElementsByClassName('track-info ellipsis-one-line');
+        let art = document.getElementsByClassName('now-playing__cover-art');
 
-        var music_title = info[0].innerText;
-        var artist_name = info[1].getElementsByClassName(
+        let music_title = info[0].innerText;
+        let artist_name = info[1].getElementsByClassName(
                                     'react-contextmenu-wrapper')[1].innerText;
-        var url = art[0].getElementsByClassName('cover-art-image')[0].
+        let url = art[0].getElementsByClassName('cover-art-image')[0].
                             style.backgroundImage.split("\"");
 
         if(flag == false & min == 0 & sec == 2){
-            var options = {
+            let options = {
                 body: artist_name,
                 icon: url[1]
             };
-            var p = new Notification(music_title, 
+            let p = new Notification(music_title, 
                                      options);
             setTimeout(p.close.bind(p), 5000); 
             flag = true;
