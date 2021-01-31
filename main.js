@@ -8,6 +8,7 @@ if (Notification.permission !== 'denied') {
 function main(e) {
     let jsInitCheckTimer = setInterval(jsLoaded, 1000);
     let flag = false;
+    let xhr = new XMLHttpRequest();
 
     function jsLoaded() {
         flag = false;
@@ -28,8 +29,26 @@ function main(e) {
             };
             let p = new Notification(music_title, 
                                      options);
-            setTimeout(p.close.bind(p), 5000); 
+            setTimeout(p.close.bind(p), 5000);
             flag = true;
+
+            // slackステータスに設定
+            xhr.open("POST", 'https://slack.com/api/users.profile.set', false);
+            
+            let d = {
+                'token': TOKEN,
+                'user': USER,
+                'profile': {
+                    "status_text": music_title + " [" + artist_name  +"]",
+                    "status_emoji": ":spotify:"
+                },
+                'status_expiration': 0
+            }
+            
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("Authorization", "Bearer " + TOKEN);
+            
+            xhr.send(JSON.stringify(d));
         }
     }
 }
